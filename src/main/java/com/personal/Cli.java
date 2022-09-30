@@ -13,6 +13,7 @@ public class Cli {
         ArgumentParser parser = ArgumentParsers.newFor("JGrep").build()
             .defaultHelp(true)
             .description("Java implementation for grep function.");
+        // TODO: add regex support
         parser.addArgument("search-string")
             .dest("searchString")
             .metavar("S")
@@ -31,6 +32,14 @@ public class Cli {
             .dest("ignoreCase")
             .setDefault(false)
             .help("To ignore case or not");
+        // TODO: implement replace function
+        parser.addArgument( "--replace")
+            .type(String.class)
+            .help("String which will replace.");
+        // TODO: add output string format
+        parser.addArgument( "--formating")
+            .type(String.class)
+            .help("Output formatting.");
 
         Namespace ns = null;
         try {
