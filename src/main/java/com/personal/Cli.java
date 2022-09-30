@@ -1,6 +1,7 @@
 package com.personal;
 
 import net.sourceforge.argparse4j.ArgumentParsers;
+import net.sourceforge.argparse4j.impl.Arguments;
 import net.sourceforge.argparse4j.inf.ArgumentParser;
 import net.sourceforge.argparse4j.inf.ArgumentParserException;
 import net.sourceforge.argparse4j.inf.Namespace;
@@ -22,11 +23,12 @@ public class Cli {
             .setDefault(".")
             .help("Drirectory to search in");
         parser.addArgument("-r", "--recursive")
-            .type(Boolean.class)
-            .setDefault(true)
+            .type(Arguments.booleanType())
+            .setDefault(false)
             .help("Recursive or not search");
         parser.addArgument("-i", "--ignore-case")
-            .type(Boolean.class)
+            .type(Arguments.booleanType())
+            .dest("ignoreCase")
             .setDefault(false)
             .help("To ignore case or not");
 

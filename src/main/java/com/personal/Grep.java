@@ -54,7 +54,8 @@ public class Grep {
         }
     }
 
-    private void searchForString() {    
+    private void searchForString() {
+        System.out.println(String.format("This queue is empty: %s", this.queue.isEmpty()));
         while (!this.queue.isEmpty()) {
             FileInputStream inputStream = null;
             Scanner sc = null;
@@ -70,9 +71,9 @@ public class Grep {
                 sc = new Scanner(inputStream, "UTF-8");
 
                 while (sc.hasNextLine()) {
+                    Boolean fileNamePrinted = false;
                     Boolean contains = false;
                     String line = sc.nextLine();
-                    System.out.print("here");
                     if (this.isIgnorecase) {
                         if (line.toLowerCase().contains(this.stringToSearch.toLowerCase())){
                             contains = true;
@@ -82,9 +83,12 @@ public class Grep {
                             contains = true;
                         }
                     }
-
                     if (contains) {
-                        System.out.println(String.format("File: %s\nContains line: %s", fileToScan, this.stringToSearch));
+                        if (!fileNamePrinted) {
+                            System.out.println(String.format("File: %s", fileToScan));
+                            fileNamePrinted = true;
+                        }
+                        System.out.println(String.format("Line: %s", line));
                     }
                 }
                 

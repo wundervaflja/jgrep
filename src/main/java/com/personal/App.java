@@ -13,7 +13,7 @@ public class App
         String searchString = ns.get("searchString");
         String directory = ns.get("directory");
         Boolean isRecursive = ns.get("recursive");
-        Boolean isIgnorecase = ns.get("ignore-case");
+        Boolean isIgnorecase = ns.get("ignoreCase");
         GrepBuilder grepBuilder = new GrepBuilder();
         Grep grep = grepBuilder
             .setStringToSearch(searchString)
